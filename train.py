@@ -88,11 +88,16 @@ class ImageLogger(Callback):
 model = Sequential()
 model.add(layers.Conv2D(3, (3, 3), activation='relu', padding='same',
                         input_shape=(config.input_width, config.input_height, 3)))
+model.add(layers.Dense(64))
 model.add(layers.UpSampling2D())
 model.add(layers.Conv2D(3, (3, 3), activation='relu', padding='same'))
+model.add(layers.Dense(16))
 model.add(layers.UpSampling2D())
 model.add(layers.Conv2D(3, (3, 3), activation='relu', padding='same'))
+model.add(layers.Dense(16))
 model.add(layers.UpSampling2D())
+model.add(layers.Conv2D(3, (3, 3), activation='relu', padding='same'))
+model.add(layers.Dense(16))
 model.add(layers.Conv2D(3, (3, 3), activation='relu', padding='same'))
 
 # DONT ALTER metrics=[perceptual_distance]
